@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Butifull design</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="styles_some_design.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo"><a href="#" class="link">WebProject</a></h1>
+    <nav>
+      <a href="#" class="link">Home</a>
+      <a href="#" class="link icons" title="Корзина">shopping_cart</a>
+      <button href="#" class="link link_open_menu">More..</button>
+      <div class="menu_inner">
+        <div class="block_on_menu_inner"></div>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+        <a href="#" class="link">Text</a>
+      </div>
+    </nav>
+  </header>
+
+  <form class="formSearch" action="index.html" method="post">
+    <input class="searchTextField" type="text" name="search" placeholder="Поиск..">
+    <button class="buttonSearch icons" type="button" name="button">manage_search</button>
+  </form>
+
+  <main class="container main">
+    <h1>Корзина</h1>
+    <div class="blockFunctions mt-25">
+      <button id="clearCartButton" title="Очистить корзину" class="btnClearCart icons">remove_shopping_cart</button>
+      <form action="" method="post">
+        <input type="hidden" name="idItems" value="">
+        <input type="number" name="phoneNumbers" placeholder="Номер телефона" required>
+        <button class="btn">Заказать</button>
+      </form>
+    </div>
+    <div class="items mt-25">
+      <a href="#" class="item">
+        <div class="main_div_sale">
+          <div class="sale">Скидка 20%</div>
+        </div>
+        <button class="cart delete icons">delete</button>
+        <span class="price">$1000</span>
+        <img src="https://ru-static.z-dn.net/files/d8d/1618ccf635de4dc44a097d0c1d7ae414.png" alt="logo python">
+        <h3 class="title">Название товара о чём - то</h3>
+        <p class="opisanie">Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара</p>
+        <span class="idItem">1</span>
+      </a>
+
+      <a href="#" class="item">
+        <div class="main_div_sale">
+          <div class="sale">Скидка 10%</div>
+        </div>
+        <button class="cart delete icons">delete</button>
+        <span class="price">$1200</span>
+        <img src="https://teeltechcanada.com/2015/wp-content/uploads/2017/06/Python-Logo-PNG-Image.png" alt="logo python">
+        <h3 class="title">Название товара о чём - то</h3>
+        <p class="opisanie">Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара</p>
+        <span class="idItem">2</span>
+      </a>
+
+      <a href="#" class="item">
+        <div class="main_div_sale">
+          <div class="sale">Скидка 30%</div>
+        </div>
+        <button class="cart delete icons">delete</button>
+        <span class="price">$1200</span>
+        <img src="https://mpng.subpng.com/20190328/xcl/kisspng-europython-logo-programming-language-portable-netw-join-our-team-job-opportunities-sample-solutions-5c9d90c3c63625.6121225015538300838119.jpg" alt="logo python">
+        <h3 class="title">Название товара о чём - то</h3>
+        <p class="opisanie">Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара Описание товара</p>
+        <span class="idItem">3</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <script src="preloaderJsFile.js"></script>
+
+  <script type="text/javascript">
+    var allItemsInCart = localStorage.getItem("itemsInCart");
+    var allItemsList = allItemsInCart == null ? [] : allItemsInCart.split(", ");
+    var buttonsDelete = document.querySelectorAll('.items .item button.cart');
+    buttonsDelete.forEach(function (button) {
+      button.parentElement.querySelector(".price").innerHTML += " X " + getCountItem(button.parentElement.querySelector(".idItem").innerHTML);
+
+      if (getCountItem(button.parentElement.querySelector(".idItem").innerHTML) == 0) {
+        button.parentElement.remove();
+      }
+
+      button.onclick = function () {
+        event.preventDefault();
+        var itemOne = this.parentElement;
+        deleteItemFromCart(itemOne);
+      }
+    });
+
+    function deleteItemFromCart(itemOne) {
+      itemOne.querySelector(".price").innerHTML = itemOne.querySelector(".price").innerHTML.replace(" X " + getCountItem(itemOne.querySelector(".idItem").innerHTML), "");
+
+      allItemsList = allItemsList.filter(e => e != itemOne.querySelector(".idItem").innerHTML);
+      allItemsInCart = allItemsList.join(", ");
+      localStorage.setItem("itemsInCart", allItemsInCart);
+
+      itemOne.querySelector(".price").innerHTML += " X " + getCountItem(itemOne.querySelector(".idItem").innerHTML);
+      itemOne.remove();
+      updateHiddenInput();
+    }
+
+    function getCountItem(idItem) {
+      var countItems = 0;
+      for (var i = 0; i <= allItemsList.length; i++) {
+        if (allItemsList[i] == idItem) {
+          countItems++;
+        }
+      }
+      return countItems;
+    }
+
+    function updateHiddenInput() {
+      document.querySelector(".blockFunctions form input[type='hidden']").value = localStorage.getItem("itemsInCart");
+    }
+    updateHiddenInput();
+
+    var clearCartButton = document.querySelector("#clearCartButton");
+    clearCartButton.onclick = function () {
+      localStorage.removeItem("itemsInCart");
+      document.querySelector(".items").innerHTML = "<h2 class='cartIsCleared'>Корзина пуста</h2>";
+      updateHiddenInput();
+    }
+
+    function getAllItemsFromArr(arr) {
+        var some = {};
+        return arr.filter(function (item) {
+            return some.hasOwnProperty(item) ? false : (some[item] = true);
+        });
+    }
+  </script>
+</body>
+</html>

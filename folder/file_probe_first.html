@@ -103,6 +103,7 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
+        tg.expand();
         let btn = document.querySelector("#btn");
         let input = document.querySelector("#input");
         let input2 = document.querySelector("#input2");
@@ -110,6 +111,12 @@
 
         btn.addEventListener("click", () => {
             order = input.value + "   " + input2.value;
+            let data = {
+                name: input.value,
+                text: input2.value
+            }
+            tg.sendData(JSON.stringify(data));
+            tg.close();
         }):
     </script>
 </body>

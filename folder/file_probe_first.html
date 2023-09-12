@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ua">
 <head>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -88,16 +87,20 @@
             background: var(--tg-theme-secondary-bg-color);
         }
   </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <form action="" class="form">
     <button class="btn" id="btn" type="button">Оформити</button>
 
+    <input type="text" class="input" id="input3" required>
+    <label for="input3" class="label">Поясненя до вашого заказу</label>
+
     <input type="text" class="input" id="input2" required>
     <label for="input2" class="label">Ще текст</label>
 
     <input type="text" class="input" id="input" required>
-    <label for="input" class="label">Ім'я</label>
+    <label for="input" class="label">Ім'я, яке вишивати</label>
 
     <h2>Оформити заказ</h2>
   </form>
@@ -107,12 +110,14 @@
         let btn = document.querySelector("#btn");
         let input = document.querySelector("#input");
         let input2 = document.querySelector("#input2");
+        let input3 = document.querySelector("#input3");
         let order = "";
 
         btn.addEventListener("click", () => {
             let data = {
                 name: input.value,
-                text: input2.value
+                text: input2.value,
+                about: input3.value
             }
             tg.sendData(JSON.stringify(data));
             tg.close();

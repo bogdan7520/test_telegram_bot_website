@@ -7,6 +7,723 @@
   <title>Butifull design</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="styles_some_design.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  background: #f7f7f7;
+}
+.link {
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  left: 0;
+  background: #333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.header {
+  width: 100%;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.3);
+  display: flex;
+  justify-content: space-around;
+  background: #fcfcfc;
+  z-index: 12;
+}
+.header .logo {margin-left: 30px;}
+.header .logo a.link::after {height: 5px;}
+.header nav {
+  margin-right: 85px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.header nav .link {
+  font-size: 20px;
+  margin: 0 20%;
+}
+.header nav .menu_inner {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgba(51, 51, 51, 0.2);
+  padding: 20px;
+  flex-wrap: wrap;
+  background: #fff;
+  min-width: 200px;
+  position: absolute;
+  align-items: center;
+  top: 100px;
+  transition: all 0.3s ease;
+  transform: translateY(calc(-100% - 100px));
+  margin-right: -200px;
+  z-index: 15;
+}
+.header nav .menu_inner .block_on_menu_inner {
+  background: transparent;
+  height: 100px;
+  margin-top: -100px;
+  width: 120%;
+  margin-left: -20px;
+  position: relative;
+}
+.header nav .link.link_open_menu {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.header nav .link.link_open_menu:hover + .menu_inner, .header nav .menu_inner:hover {transform: translateY(0);}
+
+.header nav .link.link_open_menu:focus + .menu_inner {transform: translateY(0);}
+
+.header nav .menu_inner .link {
+  text-align: center;
+  background: #eaeaea;
+  border-radius: 10px;
+  margin: 5px;
+  transition: all 0.3s ease;
+  padding: 5px;
+  max-width: 70%;
+  min-width: 70%;
+}
+.header nav .menu_inner .link:hover {
+  transform: scale(1.1);
+}
+.header nav .menu_inner .link:hover::after {transform: scaleX(0);}
+.header nav .menu_inner .link::after {transition: transform 0.5s ease;}
+
+.container {
+    width: 1258px;
+    margin: 0 auto;
+}
+@media (max-width: 1258px) {
+  .container {
+    width: 1058px;
+  }
+}
+@media (max-width: 1058px) {
+  .container {
+    width: 758px;
+  }
+}
+@media (max-width: 758px) {
+  .container {
+    width: 558px;
+  }
+}
+@media (max-width: 558px) {
+  .container {
+    width: 80%;
+  }
+}
+.main {
+  margin: 100px auto;
+}
+
+@media (max-width: 780px) {
+  .header .logo {
+    margin-left: -50px;
+  }
+}
+@media (max-width: 700px) {
+  .header .logo {
+    margin-left: 20%;
+  }
+  .header nav > .link {
+    margin-top: 80px;
+  }
+  .header nav {margin-left: -50%}
+
+  .header nav .menu_inner {
+    margin-right: -100px;
+  }
+}
+
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.items .item {
+  max-width: 350px;
+  background: #fcfcfc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgba(51, 51, 51, 0.2);
+  text-decoration: none;
+  color: #333;
+  padding: 20px;
+  position: relative;
+  margin: 0 10px;
+  margin-bottom: 50px;
+  max-height: 550px;
+  position: relative;
+}
+.items .item h3 {margin-top: 10px;}
+.items .item img {
+  max-width: 100%;
+  border-radius: 5px;
+  width: 100%
+}
+.items .item .price {
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  background: #eaeaea;
+  border-radius: 25% 75% 47% 53% / 53% 3% 97% 47%;
+  padding: 10px 20px;
+}
+.items .item .opisanie {
+  margin-top: 10px;
+  overflow-y: auto;
+  max-height: 20%;
+  scrollbar-color: #ccc #fff;
+  scrollbar-width: thin;
+}
+@media (max-width: 1058px) {
+  .items .item {
+    max-width: 300px;
+    max-height: 500px;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 758px) {
+  .items .item {
+    max-width: 350px;
+    max-height: 550px;
+  }
+}
+
+@media (max-width: 780px) {
+  .header .logo {
+    margin-left: -50px;
+  }
+}
+@media (max-width: 700px) {
+  .header .logo {
+    margin-left: 20%;
+  }
+  .header nav > .link {
+    margin-top: 80px;
+  }
+  .header nav {margin-left: -50%}
+
+  .header nav .menu_inner {
+    margin-right: -100px;
+  }
+}
+
+.main_div_sale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.item .sale, .blockToLook .sale {
+  padding: 5px;
+  background: #59cf78;
+  position: absolute;
+  transform: rotate(-45deg) translate(-80px, 5px);
+  width: 200px;
+  text-align: center;
+  margin-top: -30px;
+  user-select: none;
+}
+.item .newItem, .blockToLook .newItem {
+  background: #993a3f;
+  color: #fff;
+}
+.item .cart {
+  position: absolute;
+  background: #d15656;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 80px;
+  font-size: 25px;
+  border: 0;
+  cursor: pointer;
+  bottom: 0;
+  right: 0;
+  transition: transform 0.2s ease;
+  transform-origin: right;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.item:hover .cart {
+  transform: scaleX(1.2);
+}
+.infoDetail {
+  display: flex;
+  flex-wrap: wrap;
+}
+.infoDetail .images {
+  width: 80%;
+  max-width: 500px;
+  max-height: 700px;
+  display: flex;
+  overflow: hidden;
+  margin: 0 20px;
+}
+.infoDetail .images .img_div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  min-width: 100%;
+}
+.infoDetail .images .img_div img {
+  height: 100%;
+}
+.btnsShow {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  border: 0;
+  height: 70px;
+  width: 70px;
+  font-size: 35px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 25%;
+  transition: all 0.3s ease;
+}
+.btnsShow:hover {transform: scale(1.1);}
+.btnsShow:active {background: #555;}
+.icons {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  font-family: 'Material Symbols Outlined';
+}
+
+.infoDetail .infoText {
+  width: calc(50% - 70px);
+}
+.infoDetail .infoText p {
+  margin-top: 15px;
+}
+.infoDetail .infoText .buyButton {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+@media (max-width: 1258px) {
+  .infoDetail .infoText {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+@media (max-width: 758px) {
+  .infoDetail .images {
+    width: 100%;
+  }
+  .infoDetail .images .img_div {
+    align-items: center;
+  }
+  .infoDetail .images .img_div img {
+    height: fit-content;
+    width: 100%;
+  }
+  .btnsShow {
+    position: absolute;
+    top: 50%;
+    background: transparent;
+    color: #333;
+  }
+  #toLeft.btnsShow {
+    left: 10%;
+  }
+  #toRight.btnsShow {
+    float: right;
+    right: 10%;
+  }
+}
+
+
+
+.blockToLook {
+  padding: 10px;
+  background: #fcfcfc;
+  box-shadow: 0px 0px 3px rgba(51, 51, 51, 0.2);
+  width: 250px;
+  min-height: 350px;
+  position: sticky;
+  float: right;
+  right: 20px;
+  top: 20px;
+  margin-top: calc(-80% + 80px);
+  border-radius: 10px;
+  z-index: 10;
+}
+.blockToLook img {
+  max-width: 250px;
+  border-radius: 10px;
+}
+.blockToLook h3 {margin-top: 5px;}
+.blockToLook button {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.buyButton {
+  display: block;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #3a9953, #59cf78);
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.buyButton:hover {
+  filter: brightness(90%);
+}
+
+.blockToLook .closeNewItem {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  font-size: 20px;
+  background: #fcfcfc;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  border: 1px solid silver;
+  z-index: 5;
+}
+
+.mt-25 {margin-top: 25px;}
+
+@media (max-width: 1850px) {
+  .blockToLook {
+    position: absolute;
+    top: 450px;
+    margin-top: 0;
+    right: 50px;
+  }
+}
+@media (max-width: 1058px) {
+  .blockToLook {
+    position: absolute;
+    top: 70px;
+    max-height: 100px;
+    min-height: 100px;
+    right: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 2px solid #c0c0c03b;
+    border-bottom: 2px solid #c0c0c03b;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+  }
+  .blockToLook img {
+    max-height: 80px;
+    max-width: fit-content;
+    margin-right: 50px;
+  }
+  .blockToLook button.buyButton {
+    width: 25vw;
+    min-width: 162px;
+  }
+  .blockToLook button.closeNewItem {
+    float: right;
+    right: 10px;
+    top: 5px;
+    left: auto;
+  }
+  .blockToLook .main_div_sale {
+    height: 80px;
+    width: 80px;
+  }
+  .blockToLook .newItem, .blockToLook .sale {
+    width: 90px;
+    font-size: 12px;
+    transform: rotate(-45deg) translate(-83px, 50px);
+    margin-top: -80px;
+  }
+}
+@media (max-width: 700px) {
+  .blockToLook {
+    top: 139px;
+  }
+}
+@media (max-width: 600px) {
+  .blockToLook {
+    padding: 10px 20px;
+    overflow: hidden;
+  }
+  .blockToLook img {margin-right: 20px;}
+}
+
+
+
+
+.preloader {
+  position: fixed;
+  background: #fcfcfc;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.preloader .oneRound {
+  display: block;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background: #333;
+  border-radius: 50%;
+  transform: translateX(-70px) rotate(360deg);
+  transform-origin: 70px;
+  animation: animateLoading 3s cubic-bezier(.81,.82,.31,.95) infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes animateLoading {
+  0% {
+    transform: translateX(-70px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-70px) rotate(360deg);
+  }
+}
+.idItem {display: none;}
+
+
+.blockFunctions {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #fcfcfc;
+}
+.blockFunctions form input {
+  padding: 10px;
+  outline: none;
+  border: 1px solid #b53f41;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  -moz-appearance: textfield;
+}
+.blockFunctions form input:focus, .blockFunctions form input:focus + button {
+  box-shadow: 0px 0px 5px rgba(181, 63, 65, 0.5);
+}
+.btn {
+  background: linear-gradient(to right, #78292a, #c4494b);
+  padding: 7px 20px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  filter: brightness(90%);
+}
+.blockFunctions form button {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  transform: translate(-5px, 1px);
+  border: 1px solid #b53f41;
+}
+
+.blockFunctions .btnClearCart {
+  border-radius: 50%;
+  border: 0;
+  background: linear-gradient(to right, #78292a, #c4494b);
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
+  transition: all 0.3s ease;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.blockFunctions .btnClearCart:hover {
+  filter: brightness(90%);
+}
+@media (max-width: 552px) {
+  .blockFunctions .btnClearCart {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 470px) {
+  .blockFunctions form button {
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 2px;
+    transform: translate(0px, -2px);
+    width: 100%;
+  }
+  .blockFunctions form input {
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 10px;
+    width: calc(100% - 22px);
+    height: 25px;
+  }
+  .blockFunctions .btnClearCart {
+    margin-right: 0;
+  }
+}
+.cartIsCleared {
+  text-align: center;
+  width: 100%;
+}
+
+
+form.formSearch {
+  margin-left: 50px;
+  background: transparent;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  padding-top: 5px;
+  min-height: 50px;
+  position: absolute;
+  top: 10px;
+}
+
+
+.searchTextField {
+  position: relative;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #b53f41;
+  transition: all 0.3s ease;
+  z-index: 8;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-indent: 20px;
+  background: transparent
+}
+.searchTextField:focus, .searchTextField:focus + .buttonSearch {
+  box-shadow: 0px 0px 5px rgba(181, 63, 65, 0.5);
+}
+
+.buttonSearch {
+  background: linear-gradient(to right, #78292a, #c4494b);
+  padding: 3px 10px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
+  transition: all 0.3s ease;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border: 1px solid #b53f41;
+  transform: translate(-5px, 8px);
+}
+.buttonSearch:hover {
+  filter: brightness(90%);
+}
+.buttonSearch {transform: scale(0);}
+
+form.formSearch::after {
+  position: relative;
+  content: 'search';
+  padding: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: block;
+  font-size: 20px;
+  margin-left: 1px;
+  margin-top: calc(-50% + 5px);
+  font-family: 'Material Symbols Outlined';
+  z-index: 5;
+}
+
+.searchTextField:focus {
+  width: 184px;
+  height: auto;
+  border-radius: 10px;
+  text-indent: 0px;
+  background: #fff;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.searchTextField:focus + .buttonSearch {transform: scale(1) translate(-5px, 8px);}
+
+@media (max-width: 780px) {
+  form.formSearch {
+    top: 100px;
+  }
+  header.header {position: relative;}
+}
+@media (max-width: 700px) {
+  form.formSearch {
+    top: 150px;
+  }
+}
+
+
+.imgFullScreen {
+  position: fixed;
+  height: 100vh;
+  width: 100vw!important;
+  max-width: 100vw!important;
+  max-height: 100vh!important;
+  z-index: 100;
+  background: #333;
+  top: 0;
+  left: 0;
+  margin: 0!important;
+}
+
+  </style>
 </head>
 <body>
   <header class="header">
